@@ -1,11 +1,17 @@
 <script lang="ts">
   export let text: String = ''
   export let imgUrl: String = ''
+  export let activeText: String = ''
+  export let changeActiveCard: Function = () => {}
   let isActive: Boolean = false
-  console.log('Hello Panel')
+
+  const activateCard = () => {
+    changeActiveCard(text)
+    isActive = true
+  }
 </script>
 
-<div class="panel" class:active={isActive} style="background-image: url({imgUrl})" on:click={() => isActive = !isActive}>
+<div class="panel" class:active={isActive && text === activeText} style="background-image: url({imgUrl})" on:click={activateCard}>
   <h3>{text}</h3>
 </div>
 

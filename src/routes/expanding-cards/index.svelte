@@ -1,5 +1,6 @@
 <script lang="ts">
   import Panel from './Panel.svelte'
+  let activeCard: String = ''
   const panels = [
     {
       text: 'Explore The World',
@@ -22,11 +23,15 @@
       imgUrl: 'https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
     },
   ]
+
+  const changeActiveCard = (text) => {
+    activeCard = text
+  }
 </script>
 
 <div class="container">
   {#each panels as panel}
-    <Panel text={panel.text} imgUrl={panel.imgUrl} />
+    <Panel text={panel.text} imgUrl={panel.imgUrl} activeText={activeCard} {changeActiveCard} />
   {/each}
 </div>
 
